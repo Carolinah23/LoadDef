@@ -178,7 +178,8 @@ def main(filename,current_date,ldfl2=None,ldfl3=None,scl=None,avsolns=False,apps
                 amp2darr[cvalx,cvaly] *= scale_factor[cvalx,cvaly]
 
     # Reformat Load Points into 1D Vectors
-    grid_olon, grid_olat = sc.meshgrid(lon1dseq,lat1dseq)
+    #grid_olon, grid_olat = sc.meshgrid(lon1dseq,lat1dseq)
+    grid_olon, grid_olat = np.meshgrid(lon1dseq,lat1dseq)
     olon = grid_olon.flatten()
     olat = grid_olat.flatten()
     amp  = amp2darr.flatten()

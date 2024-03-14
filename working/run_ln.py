@@ -44,7 +44,7 @@
 #               As a new option, eval_radii has not been extensively tested.
 #               As always, proceed with caution and check your results.
 # *********************************************************************
-
+# %%
 # IMPORT MPI MODULE
 from mpi4py import MPI
 
@@ -56,7 +56,7 @@ sys.path.append(os.getcwd() + "/../")
 # IMPORT PYTHON MODULES
 import numpy as np
 from LOADGF.LN import compute_love_numbers 
-
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # Full path to planet model text file
@@ -74,6 +74,8 @@ file_ext      = ("PREM.txt")
 
 # ------------------ END USER INPUTS ----------------------- #
 
+# %%
+
 # --------------------- SETUP MPI -------------------------- #
 
 # Get the main MPI communicator that controls communication between processors
@@ -84,7 +86,7 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 # ---------------------------------------------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directories Exist
@@ -104,6 +106,7 @@ if (rank == 0):
 # Make sure all jobs have finished before continuing
 comm.Barrier()
 
+# %%
 
 # Compute the Love numbers (Load and Potential)
 if (rank == 0):
@@ -125,3 +128,5 @@ else:
 
 # --------------------- END CODE --------------------------- #
 
+
+# %%

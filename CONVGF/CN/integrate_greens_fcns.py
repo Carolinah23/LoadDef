@@ -60,9 +60,9 @@ def main(gldel,glazm,ldel,lazm,tck_gfu,tck_gfv):
     intv = intv * (2.*np.sin(azm_incs_rad[0]/2.))
 
     # Create Full 1-D Arrays
-    xv,yv = sc.meshgrid(intu,lazm)
+    xv,yv = np.meshgrid(intu,lazm)
     uint = xv.flatten()
-    xv,yv = sc.meshgrid(intv,lazm)
+    xv,yv = np.meshgrid(intv,lazm)
     vint = xv.flatten()
 
     # Return Integrated Greens Functions
