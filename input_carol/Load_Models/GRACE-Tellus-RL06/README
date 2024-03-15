@@ -1,0 +1,18 @@
+GRACE Tellus files obtained from NASA PODAAC.
+
+Navigate here: 
+https://podaac-tools.jpl.nasa.gov/drive/files/allData/tellus/L3/mascon/RL06/JPL/v02/CRI/netcdf/ 
+ 
+Download:  
+GRCTellus.JPL.200204_202204.GLO.RL06M.MSCNv02CRI.nc 
+(or the most recent file available)
+ 
+Note:  
+You may need to register on earthdata.nasa.gov or sign in if you have an account already.  
+
+
+Update (by C Hurtado-Pulido March,1, 2024)
+The podaac website was dismantle in 2023, now the data must be downloaded from EarthData.
+https://search.earthdata.nasa.gov/search/granules?portal=podaac&p=C2536982552-POCLOUD!C2536982552-POCLOUD&pg[1][a]=2850424080!POCLOUD&pg[1][v]=t&pg[1][gsk]=-start_date&pg[1][m]=download&pg[1][cd]=f&g=G2850424080-POCLOUD&fdc=NASA%2FJPL%2FGRACE-TELLUS-0001&as[organization][0]=NASA/JPL/GRACE-TELLUS-0001&tl=1709332092!3!!&lat=-59.009070488311124&long=-219.796875&zoom=0
+Most recent file:
+GRCTellus.JPL.200204_202311.GLO.RL06.1M.MSCNv03.nc
