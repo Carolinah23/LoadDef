@@ -38,74 +38,76 @@ import matplotlib.pyplot as plt
 
 # %%
 # Input Parameters
-station = ("1LSU")
-filename = ("cn_LandAndOceans_" + station + "_cf_convgf_grace_rmTM1False_rmSM2False_20160101-20221231_GRACE_Tellus_RL06_JPL_ScalingFalse_stationMesh_PREM")
-ts_file = ("../../output/Convolution/" + filename + ".txt")
-figname = (filename + ".pdf")
+station_names = ["1LSU", "SJB1", "LAPA", "LAB3", "GVMS", "HAMM", "LALA", "THHR", "LANR", "MSNA", "TALL", "LAIB", "AWES", "INRI", "LABR", "SHRV", "LAAX", "TXHP", "LHJI", "COVG", "LAAB", "AME5"]
+for name in station_names: 
+    station = name
+    #filename = ("cn_LandAndOceans_" + station + "_cf_convgf_grace_rmTM1False_rmSM2False_20160101-20221231_GRACE_Tellus_RL06_JPL_ScalingFalse_stationMesh_PREM")
+    filename = ("cn_LandOnly_" + station + "_cf_convgf_grace_rmTM1False_rmSM2False_20160101-20221231_GRACE_Tellus_RL06_JPL_ScalingFalse_stationMesh_PREM")
+    ts_file = ("../../output/Convolution/" + filename + ".txt")
+    figname = (filename + ".pdf")
 
-# Detrend the Time Series? (Caution! Assumes equally spaced points)
-detrend = True
- 
-#### Begin Code
+    # Detrend the Time Series? (Caution! Assumes equally spaced points)
+    detrend = True
+    
+    #### Begin Code
 
-# Create Folder
-if not (os.path.isdir("./output/")):
-    os.makedirs("./output/")
-outdir = "./output/"
+    # Create Folder
+    if not (os.path.isdir("./output/")):
+        os.makedirs("./output/")
+    outdir = "./output/"
 
-# Read File
-date = np.loadtxt(ts_file,usecols=(0,),dtype='U',unpack=True,skiprows=1)
-lat,lon,eamp,epha,namp,npha,vamp,vpha = np.loadtxt(ts_file,delimiter=None,unpack=True,skiprows=1,usecols=(1,2,3,4,5,6,7,8))
+    # Read File
+    date = np.loadtxt(ts_file,usecols=(0,),dtype='U',unpack=True,skiprows=1)
+    lat,lon,eamp,epha,namp,npha,vamp,vpha = np.loadtxt(ts_file,delimiter=None,unpack=True,skiprows=1,usecols=(1,2,3,4,5,6,7,8))
 
-# Convert Dates to Datetime Format
-mydates = []
-hour = 0
-for jj in range(0,len(date)):
-    mydate = date[jj]
-    year = int(mydate[0:4])
-    month = int(mydate[4:6])
-    day = int(mydate[6:8])
-    hour = int(mydate[8:10]) 
-    ddate = datetime.datetime(year,month,day,hour,0,0)
-    mydates.append(ddate)
-# Convert Date List to Numpy Array
-mydates = np.array(mydates)
+    # Convert Dates to Datetime Format
+    mydates = []
+    hour = 0
+    for jj in range(0,len(date)):
+        mydate = date[jj]
+        year = int(mydate[0:4])
+        month = int(mydate[4:6])
+        day = int(mydate[6:8])
+        hour = int(mydate[8:10]) 
+        ddate = datetime.datetime(year,month,day,hour,0,0)
+        mydates.append(ddate)
+    # Convert Date List to Numpy Array
+    mydates = np.array(mydates)
 
-# Convert Amp/Pha to Displacement
-ets = np.multiply(eamp,np.cos(np.multiply(epha,(pi/180.))))
-nts = np.multiply(namp,np.cos(np.multiply(npha,(pi/180.))))
-vts = np.multiply(vamp,np.cos(np.multiply(vpha,(pi/180.))))
+    # Convert Amp/Pha to Displacement
+    ets = np.multiply(eamp,np.cos(np.multiply(epha,(pi/180.))))
+    nts = np.multiply(namp,np.cos(np.multiply(npha,(pi/180.))))
+    vts = np.multiply(vamp,np.cos(np.multiply(vpha,(pi/180.))))
 
-# Optionally Detrend
-if (detrend == True):
-    ets = signal.detrend(ets,type='linear')
-    nts = signal.detrend(nts,type='linear')
-    vts = signal.detrend(vts,type='linear')
- 
-# %%
-# Plot
-plt.subplot(3,1,1)
-plt.plot_date(mydates,ets,'.',color='black',ms=4,linestyle='-',linewidth=1)
-plt.title("Station : " + station)
-plt.ylabel('East (mm)')
-ax = plt.gca()
-ax.axes.xaxis.set_ticklabels([])
-plt.grid(True)
-plt.subplot(3,1,2)
-plt.plot_date(mydates,nts,'.',color='black',ms=4,linestyle='-',linewidth=1)
-plt.ylabel('North (mm)')
-plt.grid(True)
-ax = plt.gca()
-ax.axes.xaxis.set_ticklabels([])
-plt.subplot(3,1,3)
-plt.plot_date(mydates,vts,'.',color='black',ms=4,linestyle='-',linewidth=1)
-plt.ylabel('Up (mm)')
-plt.xlabel('Date')
-plt.xticks(rotation=25)
-plt.grid(True)
-plt.tight_layout()
-plt.savefig((outdir+figname),orientation='portrait',format='pdf')
-plt.show()
+    # Optionally Detrend
+    if (detrend == True):
+        ets = signal.detrend(ets,type='linear')
+        nts = signal.detrend(nts,type='linear')
+        vts = signal.detrend(vts,type='linear')
+    
+    # Plot
+    plt.subplot(3,1,1)
+    plt.plot_date(mydates,ets,'.',color='black',ms=4,linestyle='-',linewidth=1)
+    plt.title("Station : " + station)
+    plt.ylabel('East (mm)')
+    ax = plt.gca()
+    ax.axes.xaxis.set_ticklabels([])
+    plt.grid(True)
+    plt.subplot(3,1,2)
+    plt.plot_date(mydates,nts,'.',color='black',ms=4,linestyle='-',linewidth=1)
+    plt.ylabel('North (mm)')
+    plt.grid(True)
+    ax = plt.gca()
+    ax.axes.xaxis.set_ticklabels([])
+    plt.subplot(3,1,3)
+    plt.plot_date(mydates,vts,'.',color='black',ms=4,linestyle='-',linewidth=1)
+    plt.ylabel('Up (mm)')
+    plt.xlabel('Date')
+    plt.xticks(rotation=25)
+    plt.grid(True)
+    plt.tight_layout()
+    #plt.savefig((outdir+figname),orientation='portrait',format='pdf')
+    plt.show()
 
 
 # %%
