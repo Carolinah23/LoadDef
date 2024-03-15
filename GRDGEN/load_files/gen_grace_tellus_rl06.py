@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'CONVGF' DIRECTORY
 from __future__ import print_function
 import sys
@@ -36,6 +36,7 @@ import datetime
 import netCDF4 
 from GRDGEN.utility import read_grace_tellus
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Atmospheric Surface Pressure Files from GRACE - MUST HAVE NETCDF4 FOR PYTHON INSTALLED 
@@ -43,12 +44,12 @@ from GRDGEN.utility import read_grace_tellus
 grace_directory = ("../../input/Load_Models/GRACE-Tellus-RL06/")
 
 # Date Range for Temporal-Mean Computation (yyyy, mm, dd); End Day is Included (Files to be Read in)
-start_year_tm = 2019; start_month_tm = 10; start_day_tm = 1
-end_year_tm = 2021; end_month_tm = 10; end_day_tm = 1
+start_year_tm = 2016; start_month_tm = 1; start_day_tm = 1
+end_year_tm = 2022; end_month_tm = 12; end_day_tm = 31
   
 # Date Range for Output Files (yyyy, mm, dd); End Day is Included (Files to be Written out)
-start_year_out = 2019; start_month_out = 10; start_day_out = 1
-end_year_out = 2021; end_month_out = 10; end_day_out = 1
+start_year_out = 2016; start_month_out = 1; start_day_out = 1
+end_year_out = 2022; end_month_out = 12; end_day_out = 31
   
 # Remove spatial and temporal averages?
 rm_spatial_mean = False
@@ -64,7 +65,7 @@ add_tag = (tmrange + "_GRACE_Tellus_RL06")
 ### Complete Pathname to Current GRACE File
 
 # First solution
-loadfile1 = grace_directory + "GRCTellus.JPL.200204_202205.GLO.RL06M.MSCNv02CRI.nc"
+loadfile1 = grace_directory + "GRCTellus.JPL.200204_202311.GLO.RL06.1M.MSCNv03.nc"
 tag1 = "JPL"
  
 # Second solution
@@ -100,7 +101,7 @@ write_txt = False
 write_gmt = False
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Check for output of a file
@@ -198,7 +199,7 @@ string_dates = []
 for qq in range(0,numel):
     mydt = date_list[qq]
     string_dates.append(mydt.strftime('%Y%m%d%H%M%S'))
-
+# %%
 # Fill Amplitude Array
 to_mask = np.empty((360*720,len(date_list)))
 grace_amp = np.empty((360*720,len(date_list)))
@@ -241,7 +242,7 @@ grace_amp = np.delete(grace_amp,dates_to_delete,axis=1)
 to_mask = np.delete(to_mask,dates_to_delete,axis=1)
 llat = lat_array.copy(); llon = lon_array.copy()
 print(grace_amp.shape)
-
+# %%
 # Order of Removing the Temporal and Spatial Means
 if (flip == False): # Temporal then Spatial
     # COMPUTE TEMPORAL MEAN
@@ -312,6 +313,7 @@ else: # Spatial then Temporal
 #    #print(np.max(grace_amp[:,bb]))
 #masked_amp = to_mask = None
 
+# %%
 # Set Phase to Zero (Amplitudes Contain Phase)
 grace_pha = np.zeros((360*720,len(date_list)))
 print(llon)
@@ -421,3 +423,5 @@ if (write_gmt == True):
 # --------------------- END CODE --------------------------- #
 
 
+
+# %%

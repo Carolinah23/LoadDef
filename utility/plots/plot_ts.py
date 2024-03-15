@@ -22,6 +22,7 @@
 #
 # *********************************************************************
 
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -35,9 +36,10 @@ import datetime
 from math import pi
 import matplotlib.pyplot as plt
 
+# %%
 # Input Parameters
-station = ("P144")
-filename = ("cn_LandAndOceans_" + station + "_cf_convgf_grace_rmTM1False_rmSM2False_20191001-20211001_GRACE_Tellus_RL06_JPL_ScalingFalse_stationMesh_PREM")
+station = ("1LSU")
+filename = ("cn_LandAndOceans_" + station + "_cf_convgf_grace_rmTM1False_rmSM2False_20160101-20221231_GRACE_Tellus_RL06_JPL_ScalingFalse_stationMesh_PREM")
 ts_file = ("../../output/Convolution/" + filename + ".txt")
 figname = (filename + ".pdf")
 
@@ -80,6 +82,7 @@ if (detrend == True):
     nts = signal.detrend(nts,type='linear')
     vts = signal.detrend(vts,type='linear')
  
+# %%
 # Plot
 plt.subplot(3,1,1)
 plt.plot_date(mydates,ets,'.',color='black',ms=4,linestyle='-',linewidth=1)
@@ -104,3 +107,5 @@ plt.tight_layout()
 plt.savefig((outdir+figname),orientation='portrait',format='pdf')
 plt.show()
 
+
+# %%

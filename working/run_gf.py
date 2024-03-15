@@ -21,7 +21,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # IMPORT MPI MODULE
 from mpi4py import MPI
 
@@ -34,6 +34,7 @@ sys.path.append(os.getcwd() + "/../")
 import numpy as np
 from LOADGF.GF import compute_greens_functions
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # Full path to Load Love Number file (output from run_ln.py)
@@ -43,7 +44,7 @@ lln_file = ("../output/Love_Numbers/LLN/lln_PREM.txt")
 file_out = ("PREM.txt")
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # --------------------- SETUP MPI -------------------------- #
 
 # Get the main MPI communicator that controls communication between processors
@@ -54,7 +55,7 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 # ---------------------------------------------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directory Exists
@@ -81,3 +82,5 @@ else:
 
 # --------------------- END CODE --------------------------- #
 
+
+# %%

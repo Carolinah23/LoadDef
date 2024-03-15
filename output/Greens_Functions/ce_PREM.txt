@@ -1,6 +1,6 @@
 ------------------------------------------------------ 
 :: Load Greens Functions | CE Reference Frame 
-:: Computed at 03:16PM on March 01, 2024
+:: Computed at 11:32PM on March 14, 2024
 ------------------------------------------------------ 
 theta | radial displacement (m/kg) | horizontal disp (m/kg) | r-disp*(a*th*10^12) | h-disp*(a*th*10^12) | gE*(10^18*(a*th)) | tE*(10^12*(a*th)^2) | e_rr*(10^18*(a*th)) | e_tt*(10^12*(a*th)^2) | e_ll*(10^12*(a*th)^2) | gN*(10^18*(a*th)) | tN*(10^12*(a*th)^2) 
 0.00010 -3.7923e-12 -1.1550e-12 -4.2168e+01 -1.2843e+01 -1.0190e+02 4.2190e+01 5.2063e+00 1.2843e+01 -1.2843e+01 -5.2362e+00 6.7952e+00

@@ -21,7 +21,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # IMPORT MPI MODULE
 from mpi4py import MPI
 
@@ -34,7 +34,7 @@ sys.path.append(os.getcwd() + "/../")
 import numpy as np
 from LOADGF.LN import compute_love_numbers
 from LOADGF.PL import compute_ln_partials
-
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Full path to planet model text file
@@ -56,7 +56,7 @@ finaln       = 4
 plot_fig = False
  
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # --------------------- SETUP MPI -------------------------- #
 
 # Get the main MPI communicator that controls communication between processors
@@ -67,7 +67,7 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 # ---------------------------------------------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directories Exist
@@ -152,3 +152,5 @@ else:
 
 # --------------------- END CODE --------------------------- #
 
+
+# %%
