@@ -1,6 +1,6 @@
 # Function to plot displacement results for several disk loads
 # H.R. Martens 2021-2022
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -22,8 +22,8 @@ suffix = ("km-NoTaper_ce_convgf_disk_1m_commonMesh_PREM")
 disk_rad = 10
 label1 = '10 km'
 mod1 = (prefix + str(disk_rad) + suffix)
-disk_rad = 25
-label2 = '25 km'
+disk_rad = 50
+label2 = '50 km'
 mod2 = (prefix + str(disk_rad) + suffix)
 mods = [mod1,mod2]
 labels = [label1,label2]
@@ -33,8 +33,8 @@ colors = ['black','blue']
 xmin = 89.5
 xmax = 90.0
 yminh = 0.0
-ymaxh = 1.0
-yminu = -5.0
+ymaxh = 1.3
+yminu = -7.0
 ymaxu = 2.0
 # Use Co-Latitude?
 colat = True
@@ -125,7 +125,7 @@ for ii in range(0,len(mods)):
     plt.xlim(xminp,xmaxp)
     plt.ylim(yminu,ymaxu)
     plt.tight_layout()
-    plt.savefig(plot_name_NU,format='pdf')
+    #plt.savefig(plot_name_NU,format='pdf')
 
 # show figure
 plt.show()
@@ -134,3 +134,5 @@ plt.show()
 print('finished')
 
 
+
+# %%

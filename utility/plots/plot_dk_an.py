@@ -1,3 +1,4 @@
+# %%
 # Function to plot displacement results for several disk loads
 # H.R. Martens 2021-2022
 
@@ -16,6 +17,7 @@ import os
 import sys
 from CONVGF.utility import read_convolution_file
 
+# %%
 #### USER INPUTS
 
 # Integrated Green's Function Files
@@ -28,19 +30,19 @@ suffix = ("km-NoTaper_1m")
 disk_rad = 10.0
 label1 = '10 km'
 mod1 = (prefix + str(disk_rad) + suffix)
-disk_rad = 25.0
-label2 = '25 km'
+disk_rad = 50.0
+label2 = '50 km'
 mod2 = (prefix + str(disk_rad) + suffix)
 mods = [mod1,mod2]
 labels = [label1,label2]
 colors = ['black','blue']
 # colors = ['black','blue','deeppink','gold','green','firebrick','darkorange','purple','navy']
 # RANGE:
-xmin = 89.5
+xmin = 89.0
 xmax = 90.0
 yminh = 0.0
-ymaxh = 1.0
-yminu = -5.0
+ymaxh = 1.5
+yminu = -8.0
 ymaxu = 2.0
 # Use Co-Latitude?
 colat = True
@@ -48,6 +50,7 @@ colat = True
 plot_title = ("Disks | PREM | 1 m Fresh Water")
 plot_name_NU = ("./output/all_analyticalDisks_NU_1m_PREM_" + str(90-xmax) + "_" + str(90-xmin) + ".pdf")
 
+# %%
  
 #### BEGIN CODE
 
@@ -127,7 +130,7 @@ for ii in range(0,len(mods)):
     plt.xlim(xminp,xmaxp)
     plt.ylim(yminu,ymaxu)
     plt.tight_layout()
-    plt.savefig(plot_name_NU,format='pdf')
+    #plt.savefig(plot_name_NU,format='pdf')
 
 # show figure
 plt.show()
@@ -136,3 +139,5 @@ plt.show()
 print('finished')
 
 
+
+# %%
