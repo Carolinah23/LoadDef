@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -49,11 +49,12 @@ from GRDGEN.utility import read_osu_local
 from GRDGEN.utility import read_schwiderski
 from GRDGEN.utility import read_dtu10
 from CONVGF.utility import read_AmpPha
-
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # 1. Specify the full path to the desired tidal model: Examples Provided
-loadfile = ("../../input/Load_Models/GOT410c/got410c.m2.dat")
+loadfile = ("../../input/Load_Models/GOT410c/grids_oceantide_netcdf/m2.nc")
+#loadfile = ("../../input/Load_Models/GOT410c/got410c.m2.dat")
 #loadfile = ("../../input/Load_Models/FES2014b/m2.nc")
   
 # 2. Specify the type of loading model
@@ -72,7 +73,7 @@ write_txt = False
 write_gmt = False
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Check for output of a file
@@ -206,3 +207,5 @@ if (write_txt == True):
 # --------------------- END CODE --------------------------- #
 
 
+
+# %%

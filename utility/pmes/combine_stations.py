@@ -24,7 +24,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -38,7 +38,7 @@ import numpy as np
 #directory = ("../../output/Convolution/")
 #prefix = ("cn_LandAndOceans_")
 #suffix = ("ce_convgf_disk_1m_PREM.txt") 
-
+# %%
 # Main Function
 def main(directory,prefix,suffix,output_directory="./output/"):
  
@@ -173,3 +173,5 @@ def main(directory,prefix,suffix,output_directory="./output/"):
     # Return
     return all_files
 
+
+# %%

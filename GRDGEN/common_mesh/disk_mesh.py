@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -39,6 +39,7 @@ from CONVGF.utility import read_lsmask
 from CONVGF.CN import interpolate_lsmask
 import matplotlib.pyplot as plt
  
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # 1. Specify the basic mesh resolution (in degrees)
@@ -89,7 +90,7 @@ write_nc = True
 write_txt = False
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Create Folders
@@ -338,3 +339,5 @@ plt.plot(llon,llat,'.',ms=6)
 plt.show()
 
 
+
+# %%

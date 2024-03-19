@@ -48,6 +48,7 @@
 #               As always, proceed with caution and check your results.
 # *********************************************************************
  
+# %%
 # IMPORT MPI MODULE
 from mpi4py import MPI
 
@@ -60,6 +61,7 @@ sys.path.append(os.getcwd() + "/../")
 import numpy as np
 from LOADGF.GF import compute_greens_functions
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # Full path to Load Love Number file (output from run_ln.py)
@@ -72,8 +74,8 @@ angdst = 0. # The angular distance from the load point at which to start applyin
 # Size of the disk
 use_km = True # If set to True, user must define "disk_radius"; if set to False, user must define "disks" 
 ## If using km:
-disk_radius = 10. # in km
-disks = (disk_radius / ((2*6371*np.pi)/360)) # latitude of the edge of the disk; north of here will have load, and south of here will have no load
+disk_radius = 50. # in km, arc length
+disks = (disk_radius / ((2*6371*np.pi)/360)) # latitude of the edge of the disk; north of here will have load, and south of here will have no load, angle 
 disks = np.around(disks,decimals=4) # round the disk latitude to 4 decimal places
 ## If using degrees directly:
 #disks = 10. # The angular radius of the disk (in degrees)
@@ -126,6 +128,7 @@ else:
 
 # ------------------ END USER INPUTS ----------------------- #
 
+# %%
 # --------------------- SETUP MPI -------------------------- #
 
 # Get the main MPI communicator that controls communication between processors
@@ -137,6 +140,7 @@ size = comm.Get_size()
 
 # ---------------------------------------------------------- #
 
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directory Exists
@@ -175,3 +179,5 @@ else:
 #            170.1,170.2,170.3,170.4,170.5,170.6,170.7,170.8,170.9,171.,172.,173.,174.,175.,176.,177.,178.,179., \
 #            179.2,179.4,179.6,179.8,179.9,179.99,179.999]
 
+
+# %%

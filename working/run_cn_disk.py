@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # IMPORT PRINT FUNCTION
 from __future__ import print_function
 
@@ -57,6 +57,7 @@ from CONVGF.CN import interpolate_lsmask
 from CONVGF.CN import coef2amppha
 from CONVGF.CN import mass_conservation
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Reference Frame (used for filenames) [Blewitt 2003]
@@ -171,7 +172,7 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 # ---------------------------------------------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directories Exist
@@ -550,3 +551,5 @@ comm.Barrier()
 
 # --------------------- END CODE --------------------------- #
 
+
+# %%

@@ -23,6 +23,7 @@
 #
 # *********************************************************************
 
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -36,10 +37,11 @@ import netCDF4
 from scipy import interpolate
 from CONVGF.utility import read_AmpPha
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Define the disk radius in km
-disk_radius = 25 # in km
+disk_radius = 50 # in km
 
 # compute disk latitude in degrees (90 degrees lat at north pole, minus the disk radius divided by the km in 1 angular degree (pi * diameter / 360))
 disk_lat = 90 - (disk_radius / ((2*6371*np.pi)/360)) # latitude of the edge of the disk; north of here will have load, and south of here will have no load
@@ -99,6 +101,7 @@ write_txt = False
 write_gmt = False
 
 # ------------------ END USER INPUTS ----------------------- #
+# %% 
 
 # -------------------- BEGIN CODE -------------------------- #
 
@@ -244,3 +247,5 @@ if (write_txt == True):
 # Otherwise, if your problem would allow the use of rectangular (rather than circular) loads on a lat/lon grid, then you could avoid the geometric challenges entirely. An added benefit of rectangular loads is that there's no empty space between multiple patches; circular disks do not pack together so well as rectangular patches. But this will depend on the details of your problem.
 
 
+
+# %%

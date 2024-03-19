@@ -24,7 +24,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -35,7 +35,7 @@ sys.path.append(os.getcwd() + "/../../")
 from CONVGF.utility import read_convolution_file
 from utility.pmes import combine_stations
 import numpy as np
-
+# %%
 #### USER INPUT ####
 
 directory = ("../../output/Convolution/")
@@ -46,3 +46,5 @@ suffix = ("ce_convgf_disk_1m_commonMesh_PREM.txt")
 
 combine_stations.main(directory,prefix,suffix)
 
+
+# %%
