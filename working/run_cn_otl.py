@@ -23,6 +23,7 @@
 #
 # *********************************************************************
 
+# %%
 # IMPORT PRINT FUNCTION
 from __future__ import print_function
 
@@ -57,6 +58,7 @@ from CONVGF.CN import interpolate_lsmask
 from CONVGF.CN import coef2amppha
 from CONVGF.CN import mass_conservation
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Reference Frame (used for filenames) [Blewitt 2003]
@@ -77,7 +79,7 @@ loadfile_directory = ("../output/Grid_Files/nc/OTL/")  # Example 1 (ocean tidal 
 #  :: Note: For Load Files Organized by Date, the End of Filename Name Must be in the Format yyyymmddhhmnsc.txt
 #  :: Note: If not organized by date, files may be organized by tidal harmonic, for example (i.e. a unique filename ending)
 #  :: Note: Output names (within output files) will be determined by extension following last underscore character (e.g., date/harmonic/model)
-loadfile_prefix = ("convgf_GOT410c") # Example 1 (ocean tidal loading)
+loadfile_prefix = ("convgf_FES2014-M2") # Example 1 (ocean tidal loading)
 #loadfile_prefix = ("convgf_ntol") # Example 2 (time series)
 
 # LoadFile Format: ["nc", "txt"]
@@ -90,8 +92,8 @@ time_series = False  # Example 1 (ocean tidal loading)
 
 # Date Range for Computation (Year,Month,Day,Hour,Minute,Second)
 #  :: Note: Only used if 'time_series' is True
-frst_date = [2015,1,1,0,0,0]
-last_date = [2016,3,1,0,0,0]
+frst_date = [2016,1,1,0,0,0]
+last_date = [2022,12,31,0,0,0]
 
 # Are the load values on regular grids (speeds up interpolation); If unsure, leave as false.
 regular = True
@@ -136,6 +138,7 @@ outstr = ("_" + mtag + "_" + pmod)
 
 # ------------------ END USER INPUTS ----------------------- #
 
+# %%
 # -------------------- SETUP MPI --------------------------- #
 
 # Get the Main MPI Communicator That Controls Communication Between Processors
@@ -146,7 +149,7 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 # ---------------------------------------------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Ensure that the Output Directories Exist & Read in the Stations
@@ -521,3 +524,5 @@ comm.Barrier()
 # --------------------- END CODE --------------------------- #
 
 
+
+# %%

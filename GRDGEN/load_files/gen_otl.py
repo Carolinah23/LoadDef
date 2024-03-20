@@ -53,12 +53,13 @@ from CONVGF.utility import read_AmpPha
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # 1. Specify the full path to the desired tidal model: Examples Provided
-loadfile = ("../../input/Load_Models/GOT410c/grids_oceantide_netcdf/m2.nc")
 #loadfile = ("../../input/Load_Models/GOT410c/got410c.m2.dat")
-#loadfile = ("../../input/Load_Models/FES2014b/m2.nc")
+loadfile = ("../../input/Load_Models/FES2014b/m2.nc")
+loadfile = ("../../input/Load_Models/FES2014b/FES2014/FES2014_elevations_and_load/fes2014b_loadtide/load_tide/m2.nc")
+
   
 # 2. Specify the type of loading model
-ftype = 4 # 1=FES2012, 2=FES2004, 3=TPXO8-Atlas, 4=GOT4.10c, 5=EOT11A, 6 = HAMTIDE11A, 7=OSU12, 8=LOCAL, 9=SCHWIDERSKI, 10=DTU10, 11=GOT4.10, 12=FES2014b, 13=TPXO7-Atlas, 14=TPXO9-Atlas
+ftype = 12 # 1=FES2012, 2=FES2004, 3=TPXO8-Atlas, 4=GOT4.10c, 5=EOT11A, 6 = HAMTIDE11A, 7=OSU12, 8=LOCAL, 9=SCHWIDERSKI, 10=DTU10, 11=GOT4.10, 12=FES2014b, 13=TPXO7-Atlas, 14=TPXO9-Atlas
 
 # 3. Specify the tidal harmonic
 harmonic = ("M2")

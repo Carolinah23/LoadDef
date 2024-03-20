@@ -24,7 +24,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -35,14 +35,15 @@ sys.path.append(os.getcwd() + "/../../")
 from CONVGF.utility import env2pme
 from CONVGF.utility import read_convolution_file
 import numpy as np
-
+# %%
 #### USER INPUT ####
 
 harmonic="M2"
 output_directory = ("./output/")
-filename=(output_directory + "cn_OceanOnly_" + harmonic + "_cm_convgf_GOT410c_PREM.txt")
-pme_file=(output_directory + "pme_OceanOnly_" + harmonic + "_cm_convgf_GOT410c_PREM.txt")
+filename=(output_directory + "cn_OceanOnly_" + harmonic + "_cm_convgf_FES2014-M2_stationMesh_PREM.txt")
+pme_file=(output_directory + "pme_OceanOnly_" + harmonic + "_cm_convgf_FES2014-M2_stationMesh_PREM.txt")
 
+# %%
 #### BEGIN CODE ####
 
 # Create output directory, if it does not yet exist
@@ -95,3 +96,5 @@ os.remove(pme_head)
 os.remove(pme_body)
 
 
+
+# %%
