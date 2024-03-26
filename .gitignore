@@ -200,3 +200,15 @@ output/Convolution/cn_OceanOnly_TXHP_cm_convgf_FES2014-M2_stationMesh_PREM.txt
 output/Grid_Files/nc/OTL/convgf_FES2014-M2.nc
 utility/pmes/output/cn_OceanOnly_M2_cm_convgf_FES2014-M2_stationMesh_PREM.txt
 utility/pmes/output/pme_OceanOnly_M2_cm_convgf_FES2014-M2_stationMesh_PREM.txt
+CONVGF/utility/__pycache__/env2pme.cpython-310.pyc
+CONVGF/utility/__pycache__/read_pme_file.cpython-310.pyc
+utility/pmes/output/cn_LandOnly_custom_ce_convgf_North_max_commonMesh_PREM.txt
+output/Grid_Files/nc/Custom/convgf_North_maxload_custom.nc
+output/Grid_Files/nc/commonMesh/commonMesh_regional_30.3_30.6_-91.28_-90.93_0.001_0.001_oceanmask.nc
+output/Convolution/cn_LandOnly_SJB1_ce_convgf_North_max_commonMesh_PREM.txt
+output/Convolution/cn_LandOnly_1LSU_ce_convgf_North_max_commonMesh_PREM.txt
+input/Station_Locations/NOTA_Select.txt
+input/Station_Locations/Lat_Profile_Select.txt
+input/Station_Locations/NOTA_Select.txt
+input/Station_Locations/Lat_Profile_Select.txt
+input/Station_Locations/NOTA_Select.txt
