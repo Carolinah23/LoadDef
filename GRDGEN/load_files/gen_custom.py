@@ -23,6 +23,7 @@
 #
 # *********************************************************************
 
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -35,16 +36,18 @@ import scipy as sc
 import netCDF4
 from CONVGF.utility import read_AmpPha
 
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
  
 # Specify Bounding Box for Load Model (e.g. boundingbox.klokantech.com)
 #  :: In general, the longitude range should be [0,360]
 #  :: In the special case that the bounding box crosses the prime meridian,
 #     the range should be [-180,0] for wlon and [0,180] for elon
-wlon=40. # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
-elon=80. # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
-slat=-40.  # range [-90,90]
-nlat=10.  # range [-90,90]
+wlon=-91.218 # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+elon=-91.192 # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
+slat=-30.397  # range [-90,90]
+nlat=30.6  # range [-90,90]
+
 
 # Apply Prime-Meridian Correction?
 #  :: Set to "True" if the Bounding Box Stradles the Prime Meridian
@@ -52,7 +55,7 @@ nlat=10.  # range [-90,90]
 pm_correct = False
 
 # Specify Load Height (meters)
-loadamp=1.0
+loadamp=13
 
 # Specify Phase (deg)
 loadpha=0.0
@@ -69,10 +72,10 @@ regular_grid = True
 
 # Grid Spacing
 #  :: Only used if a starting grid file is not supplied
-gspace = 0.25
+gspace = 0.1
 
 # Output Filename
-outfile = ("custom")
+outfile = ("North_maxload_custom")
 
 # Write Load Information to a netCDF-formatted File? (Default for convolution)
 write_nc = True
@@ -85,6 +88,7 @@ write_gmt = False
 
 # ------------------ END USER INPUTS ----------------------- #
 
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Check for output of a file
@@ -204,3 +208,5 @@ if (write_txt == True):
 # --------------------- END CODE --------------------------- #
 
 
+
+# %%
