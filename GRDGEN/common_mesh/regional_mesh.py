@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -38,18 +38,19 @@ import netCDF4
 from CONVGF.utility import read_lsmask
 from CONVGF.CN import interpolate_lsmask
 import matplotlib.pyplot as plt
- 
+
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # 1. Specify the region of interest
-slat = 28.
-nlat = 50.
-wlon = 233. # [0,360]
-elon = 258. # [0,360]
+slat = 30.3
+nlat = 30.6
+wlon = -91.28 # [0,360]
+elon = -90.93 # [0,360]
 
 # 2. Specify the mesh resolution (in degrees)
-grid_spacing_x = 0.01
-grid_spacing_y = 0.01
+grid_spacing_x = 0.1
+grid_spacing_y = 0.1
  
 # 3. Land-Sea Mask
 #  :: 0 = do not mask ocean or land (retain full model); 1 = mask out land (retain ocean); 2 = mask out oceans (retain land)
@@ -64,7 +65,7 @@ write_nc = True
 write_txt = False
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Create Folders
@@ -207,3 +208,5 @@ plt.plot(llon,llat,'.',ms=6)
 plt.show()
 
 
+
+# %%
