@@ -744,3 +744,15 @@ output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_TEST_10.56m-area1.nc
 output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_TEST_10.56m-area37.nc
 output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_TEST_4.28m-area1.nc
 output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_TEST_4.28m-area37.nc
+output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_8.41m-area1.nc
+output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_8.41m-area2.nc
+output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_8.41m-area3.nc
+output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_8.41m-area4.nc
+output/Grid_Files/nc/Custom/convgf_MR_load_BRregion_8.41m-area5.nc
+output/Grid_Files/text/Custom/convgf_disk_1m_50km-NoTaper.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_8.41m-area1.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_8.41m-area2.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_8.41m-area3.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_8.41m-area4.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_8.41m-area5.txt
+output/Grid_Files/text/Custom/convgf_MR_load_BRregion_TEST8.41_area37.txt
