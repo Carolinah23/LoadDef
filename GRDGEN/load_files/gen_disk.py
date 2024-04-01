@@ -95,7 +95,7 @@ outfile = ("disk_" + str(loadamp) + "m_" + str(disk_radius) + "km-NoTaper")
 write_nc = True
 
 # Write Load Information to a Text File? (Alternative for convolution)
-write_txt = False
+write_txt = True
 
 # Write Load Information to a GMT-formatted File? (Lon, Lat, Amplitude)
 write_gmt = False
