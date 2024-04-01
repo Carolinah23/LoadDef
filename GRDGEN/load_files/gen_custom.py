@@ -60,8 +60,13 @@ for h in heights:
         #  :: In general, the longitude range should be [0,360]
         #  :: In the special case that the bounding box crosses the prime meridian,
         #     the range should be [-180,0] for wlon and [0,180] for elon
-        wlon= squares["west"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
-        elon= squares["east"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
+
+        # CH: I am changing the original code to calculate the longitudes to 360 + longitude because all my 
+        # longitudes are negative but the spetial case does not apply because both sides of the bounding 
+        # box are crossing the prime meridian
+
+        wlon= 360 + squares["west"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+        elon= 360 + squares["east"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
         slat= squares["south"][index]  # range [-90,90]
         nlat= squares["north"][index]  # range [-90,90]
 
@@ -77,10 +82,10 @@ for h in heights:
         loadpha=0.0
 
         # Apply the Given Load Height and Phase to the Region Outside the Bounding Box
-        set_outside = True
+        set_outside = False
 
         # Apply the Given Load Height and Phase to the Region Inside the Bounding Box
-        set_inside = False
+        set_inside = True
 
         # Optional: Starting Grid File (If no initial starting grid, set "initial_grid = None")
         initial_grid = None
@@ -92,13 +97,13 @@ for h in heights:
 
         # Output Filename
         number = number +1
-        outfile = ("MR_load_BRregion_"+str(loadamp)+"m_area_"+str(number))
+        outfile = ("MR_load_BRregion_"+str(loadamp)+"m-area"+str(number))
 
         # Write Load Information to a netCDF-formatted File? (Default for convolution)
         write_nc = True
 
         # Write Load Information to a Text File? (Alternative for convolution)
-        write_txt = False
+        write_txt = True
 
         # Write Load Information to a GMT-formatted File? (Lon, Lat, Amplitude)
         write_gmt = False
@@ -231,10 +236,10 @@ for h in heights:
 #  :: In general, the longitude range should be [0,360]
 #  :: In the special case that the bounding box crosses the prime meridian,
 #     the range should be [-180,0] for wlon and [0,180] for elon
-wlon= -91.2277957 # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
-elon= -91.2172368 # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
-slat= 30.3089489  # range [-90,90]
-nlat= 30.31811  # range [-90,90]
+wlon= 360.+(-92.) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+elon= 360.+(-90.) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
+slat= 30.  # range [-90,90]
+nlat= 33.  # range [-90,90]
 
 # Apply Prime-Meridian Correction?
 #  :: Set to "True" if the Bounding Box Stradles the Prime Meridian
@@ -242,16 +247,16 @@ nlat= 30.31811  # range [-90,90]
 pm_correct = False
 
 # Specify Load Height (meters)
-loadamp=4.28
+loadamp=8.41
 
 # Specify Phase (deg)
 loadpha=0.0
 
 # Apply the Given Load Height and Phase to the Region Outside the Bounding Box
-set_outside = True
+set_outside = False
 
 # Apply the Given Load Height and Phase to the Region Inside the Bounding Box
-set_inside = False
+set_inside = True
 
 # Optional: Starting Grid File (If no initial starting grid, set "initial_grid = None")
 initial_grid = None
@@ -263,13 +268,13 @@ gspace = 0.1
 
 # Output Filename
 
-outfile = ("MR_load_BRregion_TEST"+str(loadamp)+"_area37_TEST")
+outfile = ("MR_load_BRregion_TEST"+str(loadamp)+"_area37")
 
 # Write Load Information to a netCDF-formatted File? (Default for convolution)
-write_nc = True
+write_nc = False
 
 # Write Load Information to a Text File? (Alternative for convolution)
-write_txt = False
+write_txt = True
 
 # Write Load Information to a GMT-formatted File? (Lon, Lat, Amplitude)
 write_gmt = False
@@ -343,6 +348,7 @@ if (set_outside == True):
 if (set_inside == True):
     amp[bboxinside] = loadamp
     pha[bboxinside] = loadpha
+
 
 # Output OTL Grid to File for Plotting in GMT
 if (write_gmt == True):
