@@ -43,14 +43,14 @@ import matplotlib.pyplot as plt
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # 1. Specify the region of interest
-slat = 30.3
-nlat = 30.6
-wlon = -91.3 # [0,360]
-elon = -90.91 # [0,360]
+slat = 30.
+nlat = 31.
+wlon = 268. # [0,360]
+elon = 269. # [0,360]
 
 # 2. Specify the mesh resolution (in degrees)
-grid_spacing_x = 0.001
-grid_spacing_y = 0.001
+grid_spacing_x = 0.0005
+grid_spacing_y = 0.0005
  
 # 3. Land-Sea Mask
 #  :: 0 = do not mask ocean or land (retain full model); 1 = mask out land (retain ocean); 2 = mask out oceans (retain land)
