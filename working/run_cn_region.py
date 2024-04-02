@@ -128,7 +128,7 @@ lsmask_file = ("../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 mass_cons = False
 
 # Station/Grid-Point Location File (Lat, Lon, StationName)
-sta_file = ("../input/Station_Locations/Lat_Profile.txt")
+sta_file = ("../input/Station_Locations/Lat_Profile_Select.txt")
 
 # -- Mesh Paramters -- High Resolution
 #del1 = 0.001    # increment in angular resolution (degrees) for innermost zone
