@@ -82,7 +82,7 @@ loadfile_directory = ("../output/Grid_Files/nc/Custom/")
 #  :: Note: For Load Files Organized by Date, the End of Filename Name Must be in the Format yyyymmddhhmnsc.txt
 #  :: Note: If not organized by date, files may be organized by tidal harmonic, for example (i.e. a unique filename ending)
 #  :: Note: Output names (within output files) will be determined by extension following last underscore character (e.g., date/harmonic/model)
-loadfile_prefix = ("convgf_MR_load_BRregion_TEST")
+loadfile_prefix = ("convgf_MR_load_BRregion")
 
 # LoadFile Format: ["nc", "txt"]
 loadfile_format = "nc"
@@ -109,7 +109,7 @@ ldens = 1000.0
 common_mesh = True
 # Full Path to Grid File Containing Surface Mesh (for sampling the load Green's functions)
 #  :: Format: latitude midpoints [float,degrees N], longitude midpoints [float,degrees E], unit area of each patch [float,dimensionless (need to multiply by r^2)]
-meshfname = ("commonMesh_regional_30.3_30.6_-91.3_-90.91_0.001_0.001_oceanmask")
+meshfname = ("commonMesh_regional_30.0_31.0_268.0_269.0_0.0005_0.0005_oceanmask")
 convmesh = ("../output/Grid_Files/nc/commonMesh/" + meshfname + ".nc")
  
 # Planet Radius (in meters; used for Greens function normalization)
@@ -128,7 +128,7 @@ lsmask_file = ("../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 mass_cons = False
 
 # Station/Grid-Point Location File (Lat, Lon, StationName)
-sta_file = ("../input/Station_Locations/Lat_Profile_Select.txt")
+sta_file = ("../input/Station_Locations/Lat_Profile.txt")
 
 # -- Mesh Paramters -- High Resolution
 #del1 = 0.001    # increment in angular resolution (degrees) for innermost zone
