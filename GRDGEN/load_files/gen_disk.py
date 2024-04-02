@@ -41,10 +41,11 @@ from CONVGF.utility import read_AmpPha
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # Define the disk radius in km
-disk_radius = 50 # in km
+disk_radius = 0.5 # in km
 
 # compute disk latitude in degrees (90 degrees lat at north pole, minus the disk radius divided by the km in 1 angular degree (pi * diameter / 360))
-disk_lat = 90 - (disk_radius / ((2*6371*np.pi)/360)) # latitude of the edge of the disk; north of here will have load, and south of here will have no load
+#disk_lat = 90 - (disk_radius / ((2*6371*np.pi)/360)) # latitude of the edge of the disk; north of here will have load, and south of here will have no load
+disk_lat = 30.3089489
 disk_lat = np.around(disk_lat,decimals=4) # round the disk latitude to 4 decimal places
 print(':: Disk latitude at edge: ', disk_lat)
 
@@ -55,7 +56,7 @@ gspace = 0.0005
 #  :: In general, the longitude range should be [0,360]
 #  :: In the special case that the bounding box crosses the prime meridian,
 #     the range should be [-180,0] for wlon and [0,180] for elon
-wlon=0. # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+wlon=0.  # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
 elon=360. # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
 slat=(disk_lat - (gspace*3))  # range [-90,90] [Slightly south of the disk edge (make sure the grid resolution, set below, gets a row or two of high-res points here)]
 nlat=(disk_lat + (gspace*3))  # range [-90,90] [Slightly north of the disk edge (make sure the grid resolution, set below, gets a row or two of high-res points here)]
@@ -68,7 +69,7 @@ nlat = np.around(nlat,decimals=4)
 pm_correct = False
 
 # Specify Load Height (meters)
-loadamp = 1
+loadamp = 8.41* (4/np.pi)
  
 # Specify Phase (deg)
 loadpha=0.0
@@ -90,9 +91,10 @@ regular_grid = True
 
 # Output Filename
 outfile = ("disk_" + str(loadamp) + "m_" + str(disk_radius) + "km-NoTaper")
-  
+#outfile = ("MR_load_BRregion_TESTcircle2"+str(loadamp)+"_area37")
+
 # Write Load Information to a netCDF-formatted File? (Default for convolution)
-write_nc = True
+write_nc = False
 
 # Write Load Information to a Text File? (Alternative for convolution)
 write_txt = True
