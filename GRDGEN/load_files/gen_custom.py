@@ -39,7 +39,7 @@ from CONVGF.utility import read_AmpPha
 
 # %% CH: I am editing the code to run it trhought several squares each with fixed coordinates. 
 # I want to  keep the coordinates to calculate the deformation of each square at different points over the study area 
-# The all the results will be added for eac subarea
+# All the results will be added for each subarea
 # March 28, 2024 (Seasonal project)
 df = pd.read_csv(r"C:\Users\carol\Box Sync\Shapefiles_06Seasonal\MR_load\MR_load_loaddef.csv")
 squares = df[df["type"]=="square"]
@@ -65,8 +65,8 @@ for h in heights:
         # longitudes are negative but the spetial case does not apply because both sides of the bounding 
         # box are crossing the prime meridian
 
-        wlon= 360 + squares["west"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
-        elon= 360 + squares["east"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
+        wlon= 360. + squares["west"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+        elon= 360. + squares["east"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
         slat= squares["south"][index]  # range [-90,90]
         nlat= squares["north"][index]  # range [-90,90]
 
@@ -93,7 +93,7 @@ for h in heights:
 
         # Grid Spacing
         #  :: Only used if a starting grid file is not supplied
-        gspace = 0.1
+        gspace = 0.0005
 
         # Output Filename
         number = number +1
@@ -103,7 +103,7 @@ for h in heights:
         write_nc = True
 
         # Write Load Information to a Text File? (Alternative for convolution)
-        write_txt = True
+        write_txt = False
 
         # Write Load Information to a GMT-formatted File? (Lon, Lat, Amplitude)
         write_gmt = False
@@ -140,8 +140,8 @@ for h in heights:
             llat,llon,amp,pha,lat1dseq,lon1dseq,amp2darr,pha2darr = read_AmpPha.main(initial_grid,regular_grid=regular_grid)
         # Generate New Grid
         else:
-            lats = np.arange(-90.,90.,gspace) + (gspace/2.0)
-            lons = np.arange(0.,360.,gspace) + (gspace/2.0)
+            lats = np.arange(30.,31.,gspace) + (gspace/2.0)
+            lons = np.arange(268.,269.,gspace) + (gspace/2.0)
             xv,yv = np.meshgrid(lons,lats)
             llon = np.ravel(xv)
             llat = np.ravel(yv)
@@ -236,10 +236,10 @@ for h in heights:
 #  :: In general, the longitude range should be [0,360]
 #  :: In the special case that the bounding box crosses the prime meridian,
 #     the range should be [-180,0] for wlon and [0,180] for elon
-wlon= 360.+(-92.) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
-elon= 360.+(-90.) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
-slat= 30.  # range [-90,90]
-nlat= 33.  # range [-90,90]
+wlon= 360.+(-91.2277957) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
+elon= 360.+(-91.2172368) # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [0,180]
+slat= 30.3089489  # range [-90,90]
+nlat= 30.31811  # range [-90,90]
 
 # Apply Prime-Meridian Correction?
 #  :: Set to "True" if the Bounding Box Stradles the Prime Meridian
@@ -264,7 +264,7 @@ regular_grid = True
 
 # Grid Spacing
 #  :: Only used if a starting grid file is not supplied
-gspace = 0.1
+gspace = 0.0005
 
 # Output Filename
 
@@ -311,8 +311,8 @@ if initial_grid is not None:
     llat,llon,amp,pha,lat1dseq,lon1dseq,amp2darr,pha2darr = read_AmpPha.main(initial_grid,regular_grid=regular_grid)
 # Generate New Grid
 else:
-    lats = np.arange(-90.,90.,gspace) + (gspace/2.0)
-    lons = np.arange(0.,360.,gspace) + (gspace/2.0)
+    lats = np.arange(30.,31.,gspace) + (gspace/2.0)
+    lons = np.arange(268.,269.,gspace) + (gspace/2.0)
     xv,yv = np.meshgrid(lons,lats)
     llon = np.ravel(xv)
     llat = np.ravel(yv)
