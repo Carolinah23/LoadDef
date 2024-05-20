@@ -92,8 +92,8 @@ time_series = False  # Example 1 (ocean tidal loading)
 
 # Date Range for Computation (Year,Month,Day,Hour,Minute,Second)
 #  :: Note: Only used if 'time_series' is True
-frst_date = [2016,1,1,0,0,0]
-last_date = [2022,12,31,0,0,0]
+frst_date = [2015,1,1,0,0,0]
+last_date = [2016,3,1,0,0,0]
 
 # Are the load values on regular grids (speeds up interpolation); If unsure, leave as false.
 regular = True
