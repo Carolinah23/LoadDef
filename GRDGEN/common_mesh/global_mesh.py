@@ -22,7 +22,7 @@
 #    along with LoadDef.  If not, see <https://www.gnu.org/licenses/>.
 #
 # *********************************************************************
-
+# %%
 # MODIFY PYTHON PATH TO INCLUDE 'LoadDef' DIRECTORY
 from __future__ import print_function
 import sys
@@ -39,6 +39,7 @@ from CONVGF.utility import read_lsmask
 from CONVGF.CN import interpolate_lsmask
 import matplotlib.pyplot as plt
  
+# %%
 # --------------- SPECIFY USER INPUTS --------------------- #
 
 # 1. Specify the basic mesh resolution (in degrees)
@@ -55,8 +56,8 @@ slat_mid=18.  # range [-90,90]
 nlat_mid=60.  # range [-90,90]
 
 # 3. Specify the enhanced mesh resolution (in degrees) | Middle region
-enhanced_lon_mid = 0.1
-enhanced_lat_mid = 0.1
+enhanced_lon_mid = 0.05
+enhanced_lat_mid = 0.05
  
 # 4. Specify bounding box for a region with enhanced mesh resolution (e.g. boundingbox.klokantech.com) | Inner region
 #  :: In general, the longitude range should be [0,360]
@@ -79,7 +80,7 @@ pm_correct = False
 # 7. Land-Sea Mask
 #  :: 0 = do not mask ocean or land (retain full model); 1 = mask out land (retain ocean); 2 = mask out oceans (retain land)
 #  :: Recommended: 1 for oceanic; 2 for atmospheric
-lsmask_type = 1
+lsmask_type = 2
 land_sea = ("../../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 
 # 8. Write Load Information to a netCDF-formatted File? (Default for convolution)
@@ -89,7 +90,7 @@ write_nc = True
 write_txt = False
 
 # ------------------ END USER INPUTS ----------------------- #
-
+# %%
 # -------------------- BEGIN CODE -------------------------- #
 
 # Create Folders
@@ -337,3 +338,5 @@ plt.plot(llon,llat,'.',ms=6)
 plt.show()
 
 
+
+# %%
