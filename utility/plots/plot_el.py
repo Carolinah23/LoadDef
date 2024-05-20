@@ -103,4 +103,68 @@ fig.text(text="1 mm x 0.5 mm", x=reflon, y=32.3, font="16p,Helvetica,black")
 fig.show()
 
 
+# %% Martens original example 
+#### BEGIN CODE
+
+# Initiate Figure
+fig = pygmt.Figure()
+
+# Make a mercator map
+with pygmt.config(MAP_FRAME_TYPE="fancy+",FONT_ANNOT_PRIMARY="16p",FONT="20p"):
+    fig.basemap(region=[-128.0, -110.0, 30.0, 50.0], projection="M15c", frame=["ag", '+t"M@-2@- Ocean Tidal Loading"'])
+
+# Plot the coastlines
+fig.coast(region=[-128.0, -110.0, 30.0, 50.0], land="white", water="lightgrey", projection="M15c", shorelines=["1/1p","2/0.1p"], borders=["1/0.5p","2/0.5p"])
+
+# Shift plot origin down by 10cm to plot another map
+#fig.shift_origin(yshift="-10c")
+ 
+# Read in the ellipse file
+sta,lat,lon,eldir,smmj,smmn,eamp,epha,namp,npha,vamp,vpha = read_pme_file.main(filename)
+
+# Sort Ellipses Based on Semi-Major Axis Length
+elidx = np.argsort(smmj)
+smmj = smmj[elidx]
+smmn = smmn[elidx]
+eldir = eldir[elidx]
+lat = lat[elidx]
+lon = lon[elidx]
+vamp = vamp[elidx]
+
+# Adjust size of ellipses
+factor = 2.
+smmj = np.divide(smmj,factor)
+smmn = np.divide(smmn,factor)
+
+# Group information by ellipse
+eldata = []
+for bb in range(0,len(smmj)):
+    eldata.append([lon[bb],lat[bb],vamp[bb],eldir[bb],smmj[bb],smmn[bb]])
+ 
+# Colormap
+#pygmt.makecpt(cmap="viridis", series=[min(vamp), max(vamp)])
+#pygmt.makecpt(cmap="seis", series=[min(vamp), max(vamp)], reverse=True) 
+pygmt.makecpt(cmap="seis", series=[0.0,20.0], reverse=True) 
+
+# Ellipse
+# e: ellipse, [[lon, lat, direction, major_axis, minor_axis]]
+fig.plot(data=eldata, style="e", cmap=True, pen="1p,black")
+
+# Add colorbar legend
+with pygmt.config(FONT_ANNOT_PRIMARY="16p",FONT="18p"):
+    fig.colorbar(frame='af+l"Up amplitude (mm)"')
+ 
+# Plot reference ellipse
+refsmmj = 8./factor
+refsmmn = 2./factor
+reflon = 360.0-125.0
+refel = [[reflon,33.0,0.0,refsmmj,refsmmn]]
+fig.plot(data=refel, style="e", color="white", pen="1p,black")
+fig.text(text="8 mm x 2 mm", x=reflon, y=32, font="16p,Helvetica,black") 
+ 
+# Save figure
+#fig.savefig("./output/OTLmap.pdf")
+ 
+# Show Figure
+fig.show()
 # %%
