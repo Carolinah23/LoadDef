@@ -41,14 +41,19 @@ from CONVGF.utility import read_AmpPha
 # I want to  keep the coordinates to calculate the deformation of each square at different points over the study area 
 # All the results will be added for each subarea
 # March 28, 2024 (Seasonal project)
-df = pd.read_csv(r"C:\Users\carol\Box Sync\Shapefiles_06Seasonal\MR_load\MR_load_loaddef.csv")
+# Adding information for Amite River (01/13/2025)
+# MR folder C:\Users\carol\Box Sync\Shapefiles_06Seasonal\MR_load\MR_load_loaddef.csv
+# AM folder C:\Users\carol\Box\Tulane\Shapefiles_06Seasonal\AR_load\AR_load_loadef.csv
+df = pd.read_csv(r"C:\Users\carol\Box\Tulane\Shapefiles_06Seasonal\AR_load\AR_load_loadef.csv")
 squares = df[df["type"]=="square"]
 squares = squares.drop(columns=["type"])
 squares["id"] = squares["id"].astype(int)
 squares.set_index("id", inplace=True)
 squares.sort_index(inplace=True)
-heights =[8.41, 8.47, 10.71, 10.87, 10.56, 9.4, 6.93, 5.05, 4.31, 4.28, 4.93, 5.26]
-
+# Heighs MR
+# heights =[8.41, 8.47, 10.71, 10.87, 10.56, 9.4, 6.93, 5.05, 4.31, 4.28, 4.93, 5.26]
+# Heighs AR  [4.63, 4.84, 4.23, 4.78, 4.44, 3.79, 3.89, 4.01, 3.56, 3.44, 3.36, 3.98], just use the month with more and less water (feb and nov)
+heights =[4.84, 3.36]
 
 # %%
 for h in heights:
@@ -62,7 +67,7 @@ for h in heights:
         #     the range should be [-180,0] for wlon and [0,180] for elon
 
         # CH: I am changing the original code to calculate the longitudes to 360 + longitude because all my 
-        # longitudes are negative but the spetial case does not apply because both sides of the bounding 
+        # longitudes are negative but the special case does not apply because both sides of the bounding 
         # box are crossing the prime meridian
 
         wlon= 360. + squares["west"][index] # range [0,360] | If Bounding Box Crosses Prime Meridian, range = [-180,0]
@@ -97,7 +102,7 @@ for h in heights:
 
         # Output Filename
         number = number +1
-        outfile = ("MR_load_BRregion_"+str(loadamp)+"m-area"+str(number))
+        outfile = ("AR_load_BRregion_"+str(loadamp)+"m-area"+str(number))
 
         # Write Load Information to a netCDF-formatted File? (Default for convolution)
         write_nc = True
@@ -125,10 +130,12 @@ for h in heights:
             os.makedirs("../../output/Grid_Files/GMT/")
         if not (os.path.isdir("../../output/Grid_Files/GMT/Custom/")):
             os.makedirs("../../output/Grid_Files/GMT/Custom/")
-        if not (os.path.isdir("../../output/Grid_Files/nc/")):
-            os.makedirs("../../output/Grid_Files/nc/")
-        if not (os.path.isdir("../../output/Grid_Files/nc/Custom/")):
-            os.makedirs("../../output/Grid_Files/nc/Custom/")
+
+        if not (os.path.isdir("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/")): #D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom
+            os.makedirs("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/")
+        if not (os.path.isdir("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/")):
+            os.makedirs("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/")
+
         if not (os.path.isdir("../../output/Grid_Files/text/")):
             os.makedirs("../../output/Grid_Files/text/")
         if not (os.path.isdir("../../output/Grid_Files/text/Custom/")):
@@ -192,7 +199,7 @@ for h in heights:
         if (write_nc == True):
             print(":: Writing netCDF-formatted file.")
             custom_out = (outfile + ".nc")
-            custom_file = ("../../output/Grid_Files/nc/Custom/convgf_" + custom_out)
+            custom_file = ("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/convgf_" + custom_out)
             # Open new NetCDF file in "write" mode
             dataset = netCDF4.Dataset(custom_file,'w',format='NETCDF4_CLASSIC')
             # Define dimensions for variables
@@ -268,7 +275,7 @@ gspace = 0.0005
 
 # Output Filename
 
-outfile = ("MR_load_BRregion_TEST"+str(loadamp)+"_area37")
+outfile = ("AR_load_BRregion_TEST"+str(loadamp)+"_area37")
 
 # Write Load Information to a netCDF-formatted File? (Default for convolution)
 write_nc = False
