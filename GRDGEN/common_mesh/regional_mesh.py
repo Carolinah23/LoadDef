@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt
 slat = 30.
 nlat = 31.
 wlon = 268. # [0,360]
-elon = 269. # [0,360]
+elon = 269.5 # [0,360]
 
 # 2. Specify the mesh resolution (in degrees)
 grid_spacing_x = 0.0005
@@ -62,7 +62,7 @@ land_sea = ("../../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 write_nc = True
 
 # 5. Write Load Information to a Text File? (Alternative for convolution)
-write_txt = False
+write_txt = True
 
 # ------------------ END USER INPUTS ----------------------- #
 # %%
@@ -75,6 +75,7 @@ if not (os.path.isdir("../../output/Grid_Files/nc/")):
     os.makedirs("../../output/Grid_Files/nc/")
 if not (os.path.isdir("../../output/Grid_Files/nc/commonMesh/")):
     os.makedirs("../../output/Grid_Files/nc/commonMesh/")
+    
 if not (os.path.isdir("../../output/Grid_Files/text/")):
     os.makedirs("../../output/Grid_Files/text/")
 if not (os.path.isdir("../../output/Grid_Files/text/commonMesh/")):
