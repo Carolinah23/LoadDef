@@ -77,12 +77,17 @@ norm_flag  = False
  
 # Full Path to Load Directory and Prefix of Filename
 loadfile_directory = ("../output/Grid_Files/nc/Custom/")
+# Amite data
+#loadfile_directory = ("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/")
 
 # Prefix for the Load Files (Load Directory will be Searched for all Files Starting with this Prefix)
 #  :: Note: For Load Files Organized by Date, the End of Filename Name Must be in the Format yyyymmddhhmnsc.txt
 #  :: Note: If not organized by date, files may be organized by tidal harmonic, for example (i.e. a unique filename ending)
 #  :: Note: Output names (within output files) will be determined by extension following last underscore character (e.g., date/harmonic/model)
-loadfile_prefix = ("convgf_MR_load_BRregion")
+# MR
+# loadfile_prefix = ("convgf_MR_load_BRregion")
+# AR
+loadfile_prefix = ("convgf_AR_load_BRregion")
 
 # LoadFile Format: ["nc", "txt"]
 loadfile_format = "nc"
@@ -101,7 +106,7 @@ regular = True
 
 # Load Density
 #  Recommended: 1025-1035 for oceanic loads (e.g., FES2014, ECCO2); 1 for atmospheric loads (e.g. ECMWF)
-ldens = 1000.0
+ldens = 20000.0
 
 # NEW OPTION: Provide a common geographic mesh?
 # If True, must provide the full path to a mesh file (see: GRDGEN/common_mesh). 
@@ -128,7 +133,7 @@ lsmask_file = ("../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 mass_cons = False
 
 # Station/Grid-Point Location File (Lat, Lon, StationName)
-sta_file = ("../input/Station_Locations/Lat_Profile_Select.txt")
+sta_file = ("../input/Station_Locations/test_AR.txt")
 
 # -- Mesh Paramters -- High Resolution
 #del1 = 0.001    # increment in angular resolution (degrees) for innermost zone
