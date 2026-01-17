@@ -76,9 +76,9 @@ grn_file = ("../output/Greens_Functions/" + rfm + "_" + pmod + ".txt")
 norm_flag  = False
  
 # Full Path to Load Directory and Prefix of Filename
-loadfile_directory = ("../output/Grid_Files/nc/Custom/")
+#loadfile_directory = ("../output/Grid_Files/nc/Custom/")
 # Amite data
-#loadfile_directory = ("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/")
+loadfile_directory = ("D:/06Seasonal/LoadDef_Amite/output/Grid_Files/nc/Custom/")
 
 # Prefix for the Load Files (Load Directory will be Searched for all Files Starting with this Prefix)
 #  :: Note: For Load Files Organized by Date, the End of Filename Name Must be in the Format yyyymmddhhmnsc.txt
@@ -106,7 +106,7 @@ regular = True
 
 # Load Density
 #  Recommended: 1025-1035 for oceanic loads (e.g., FES2014, ECCO2); 1 for atmospheric loads (e.g. ECMWF)
-ldens = 20000.0
+ldens = 1000.0
 
 # NEW OPTION: Provide a common geographic mesh?
 # If True, must provide the full path to a mesh file (see: GRDGEN/common_mesh). 
@@ -114,7 +114,7 @@ ldens = 20000.0
 common_mesh = True
 # Full Path to Grid File Containing Surface Mesh (for sampling the load Green's functions)
 #  :: Format: latitude midpoints [float,degrees N], longitude midpoints [float,degrees E], unit area of each patch [float,dimensionless (need to multiply by r^2)]
-meshfname = ("commonMesh_regional_30.0_31.0_268.0_269.0_0.0005_0.0005_oceanmask")
+meshfname = ("commonMesh_regional_30.0_31.0_268.0_269.5_0.0005_0.0005_oceanmask")
 convmesh = ("../output/Grid_Files/nc/commonMesh/" + meshfname + ".nc")
  
 # Planet Radius (in meters; used for Greens function normalization)
@@ -133,7 +133,7 @@ lsmask_file = ("../input/Land_Sea/ETOPO1_Ice_g_gmt4_wADD.txt")
 mass_cons = False
 
 # Station/Grid-Point Location File (Lat, Lon, StationName)
-sta_file = ("../input/Station_Locations/test_AR.txt")
+sta_file = ("../input/Station_Locations/Lat_Profile.txt")
 
 # -- Mesh Paramters -- High Resolution
 #del1 = 0.001    # increment in angular resolution (degrees) for innermost zone
@@ -187,11 +187,17 @@ size = comm.Get_size()
 
 # Ensure that the Output Directories Exist
 if (rank == 0):
-    if not (os.path.isdir("../output/Convolution/")):
-        os.makedirs("../output/Convolution/")
-    if not (os.path.isdir("../output/Convolution/temp/")):
-        os.makedirs("../output/Convolution/temp/")
-    tempdir = "../output/Convolution/temp/"
+    #if not (os.path.isdir("../output/Convolution/")):
+    #    os.makedirs("../output/Convolution/")
+    #if not (os.path.isdir("../output/Convolution/temp/")):
+    #    os.makedirs("../output/Convolution/temp/")
+    #tempdir = "../output/Convolution/temp/" 
+
+    if not (os.path.isdir("D:/06Seasonal/LoadDef_Amite/output/Convolution/")):
+        os.makedirs("D:/06Seasonal/LoadDef_Amite/output/Convolution/")
+    if not (os.path.isdir("D:/06Seasonal/LoadDef_Amite/output/Convolution/temp/")):
+        os.makedirs("D:/06Seasonal/LoadDef_Amite/output/Convolution/temp/")
+    tempdir = "D:/06Seasonal/LoadDef_Amite/output/Convolution/temp/"
 
     # Read Station File
     slat,slon,sta = read_station_file.main(sta_file)
